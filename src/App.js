@@ -1,36 +1,55 @@
-import React, { useState } from 'react';
-import './App.scss';
-import './styling.scss';
-import Todo from './Todo';
+import React, { useState } from "react";
+import "./App.scss";
+import "./styling.scss";
+import Todo from "./Todo";
 
 function App() {
-
-  const [todos, setTodos] = useState(['Go Out for a morning walk', 'Get Groceries from market', 'Go to the gym'])
-  const [input, setInput] = useState('')
+  const [todos, setTodos] = useState([
+    "Go Out for a morning walk",
+    "Get Groceries from market",
+    "Go to the gym",
+  ]);
+  const [input, setInput] = useState("");
   const addActivity = (event) => {
     //this will add activity when button is clicked
     event.preventDefault();
     setTodos([...todos, input]);
-    setInput(''); //clearing up input field after submitting
-  }
-
+    setInput(""); //clearing up input field after submitting
+  };
 
   return (
     <div className="App">
-      <h1> Todo App </h1>
+      <div className="heading-primary">
+        <h1> Todo App </h1>
+      </div>
 
-      <form>
-        <input value={input} onChange={event => setInput(event.target.value)} placeholder="What's your Activity ?" />
-        <button disabled={!input} type="submit" onClick={addActivity} > Add an activity </button>
-      </form>
+      <div class="form-task">
+        <form>
+          <input
+            className='input-task'
+            value={input}
+            onChange={(event) => setInput(event.target.value)}
+            placeholder="What's your Activity ?"
+          />
+          <button
+            className="button-search" 
+            disabled={!input} 
+            type="submit" 
+            onClick={addActivity}
+            >
+            Add an activity
+          </button>
+        </form>
+      </div>
 
-      <ul>
-        {todos.map(todo => (
+      <div className="task-container">
+        <ul className='task-list'>
+        {todos.map((todo) => (
           // <li>{todo}</li>
           <Todo text={todo} />
         ))}
-      </ul>
-
+        </ul>
+      </div>
     </div>
   );
 }

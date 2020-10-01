@@ -3,6 +3,7 @@ import "./App.scss";
 import "./styling.scss";
 import Todo from "./Todo";
 
+
 function App() {
   const [todos, setTodos] = useState([
     "Go Out for a morning walk",
@@ -31,13 +32,16 @@ function App() {
             onChange={(event) => setInput(event.target.value)}
             placeholder="What's your Activity ?"
           />
-          <button
-            className="button-search" 
-            disabled={!input} 
-            type="submit" 
-            onClick={addActivity}
-            >
-            Add an activity
+          <button 
+            disabled={!input}
+            variant="contained" 
+            color="primary"
+            className='input-task'
+            value={input}
+            onChange={(event) => setInput(event.target.value)}
+            placeholder="What's your Activity ?"
+          >
+          Add an activity
           </button>
         </form>
       </div>
